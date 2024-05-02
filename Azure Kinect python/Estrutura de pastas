@@ -1,0 +1,12 @@
+<project_root>/
+ | - .venv/
+ | - .vscode/
+ | - function_app.py
+ | - additional_functions.py
+ | - tests/
+ | | - test_my_function.py
+ | - .funcignore
+ | - host.json
+ | - local.settings.json
+ | - requirements.txt
+ | - Dockerfile

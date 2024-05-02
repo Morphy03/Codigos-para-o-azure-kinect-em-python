@@ -1,0 +1,11 @@
+import logging
+import azure.functions as func
+import tempfile
+
+from os import listdir
+
+#---
+   tempFilePath = tempfile.gettempdir()
+   fp = tempfile.NamedTemporaryFile()
+   fp.write(b'Hello world!')
+   filesDirListInTemp = listdir(tempFilePath)

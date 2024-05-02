@@ -1,0 +1,16 @@
+import azure.functions
+
+
+def main(req: azure.functions.HttpRequest,
+         context: azure.functions.Context) -> str:
+    return f'{context.invocation_id}'
+
+    A classeContext tem os seguintes atributos de cadeia de caracteres:
+
+Atributo	Descrição
+function_directory	O diretório no qual a função está em execução.
+function_name	O nome da função.
+invocation_id	A ID da invocação de função atual.
+thread_local_storage	O armazenamento local de thread da função. Contém um local invocation_id para registro em log de threads criados.
+trace_context	O contexto para rastreamento distribuído. Para obter mais informações, consulte Trace Context.
+retry_context	O contexto para novas tentativas para a função. Para obter mais informações, consulte retry-policies.

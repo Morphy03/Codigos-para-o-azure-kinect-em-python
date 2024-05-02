@@ -1,0 +1,14 @@
+import azure.functions as func
+import logging
+import threading
+
+
+def main(req, context):
+    logging.info('Python HTTP trigger function processed a request.')
+    t = threading.Thread(target=log_function, args=(context,))
+    t.start()
+
+
+def log_function(context):
+    context.thread_local_storage.invocation_id = context.invocation_id
+    logging.info('Logging from thread.')

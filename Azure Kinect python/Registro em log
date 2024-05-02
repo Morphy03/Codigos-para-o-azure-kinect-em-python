@@ -1,0 +1,13 @@
+import logging
+
+def main(req):
+    logging.info('Python HTTP trigger function processed a request.')
+
+#Mais métodos de registro em log disponíveis que permitem a gravação no console em níveis de rastreamento diferentes:
+
+#Método	Descrição
+#critical(_message_)	Grava uma mensagem com nível CRÍTICO no agente raiz.
+#error(_message_)	Grava uma mensagem com nível ERRO no agente raiz.
+#warning(_message_)	Grava uma mensagem com nível AVISO no agente raiz.
+#info(_message_)	Grava uma mensagem com nível INFORMAÇÕES no agente raiz.
+#debug(_message_)	Grava uma mensagem com nível DEPURAR no agente raiz.

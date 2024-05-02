@@ -1,0 +1,56 @@
+{
+  "version": "2.0",
+  "logging": 
+  {
+    "applicationInsights": 
+    {
+      "samplingSettings": 
+      {
+        "isEnabled": true,
+        "excludedTypes": "Request"
+      }
+    }
+  },
+  "extensionBundle": 
+  {
+    "id": "Microsoft.Azure.Functions.ExtensionBundle",
+    "version": "[2.*, 3.0.0)"
+  },
+  "extensions": 
+  {
+    "http": 
+    {
+        "routePrefix": ""
+    }
+  }
+}
+
+# function_app.py
+
+import azure.functions as func 
+from fastapi import FastAPI, Request, Response 
+
+fast_app = FastAPI() 
+
+@fast_app.get("/return_http_no_body") 
+async def return_http_no_body(): 
+    return Response(content="", media_type="text/plain") 
+
+app = func.AsgiFunctionApp(app=fast_app, 
+                           http_auth_level=func.AuthLevel.ANONYMOUS)
+
+                           #### OU ####
+
+                           # function_app.py
+
+import azure.functions as func 
+from flask import Flask, Response 
+
+flask_app = Flask(__name__) 
+
+@flask_app.get("/return_http") 
+def return_http(): 
+    return Response("<h1>Hello World™</h1>", mimetype="text/html") 
+
+app = func.WsgiFunctionApp(app=flask_app.wsgi_app, 
+                           http_auth_level=func.AuthLevel.ANONYMOUS)

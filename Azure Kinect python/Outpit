@@ -1,0 +1,13 @@
+# function_app.py
+import azure.functions as func
+
+app = func.FunctionApp()
+
+@app.write_blob(arg_name="msg", path="output-container/{name}",
+                connection="CONNECTION_STRING")
+def test_function(req: func.HttpRequest,
+                  msg: func.Out[str]) -> str:
+
+    message = req.params.get('body')
+    msg.set(message)
+    return message
